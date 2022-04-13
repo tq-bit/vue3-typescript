@@ -123,6 +123,7 @@ onMounted(() => registerAudioPlayer());
 	width: 100%;
 	max-width: 24rem;
 	padding: 1rem 1.5rem;
+	border-radius: 8px;
 }
 
 .audio__input__label {

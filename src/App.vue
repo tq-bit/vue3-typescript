@@ -5,7 +5,9 @@ import AppAudioPlayer from './components/AppAudioPlayer.vue';
 </script>
 
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
+	<h1>Vue 3 + Typescript: Reactivity</h1>
+  <h2>Demo: Build your own audio player</h2>
+
 	<app-audio-player></app-audio-player>
 	<p>You can find more speeches here:</p>
 	<ul>

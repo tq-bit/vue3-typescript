@@ -5,27 +5,12 @@
 	--background-color-tartiary: #fefefe;
 
 	/* Accent colors */
-	--accent-color-primary: rgb(104, 182, 118);
-	--accent-color-secondary: rgb(77, 158, 91);
-	--accent-color-blur-primary: rgba(104, 182, 118, 0.7);
-	--accent-color-blur-secondary: rgba(77, 158, 91, 0.7);
+	--accent-color-primary: #4693c8;
+	--accent-color-secondary: #3e84b4;
 
 	/* Text colors */
 	--text-color-primary: #222;
 	--text-color-secondary: #333;
-
-	--black-color: #29201a;
-	--grey-color: #cacaca;
-	--white-color: #f2f2f2;
-	--color-info: #34568b;
-	--color-success: #00a300;
-	--color-warning: #ffa500;
-	--color-error: #cd212a;
-
-	/* Opacity variables */
-	--opacity-disabled: 0.55;
-	--opacity-cloudy: 0.85;
-	--opacity-enabled: 1;
 }
 
 * {
