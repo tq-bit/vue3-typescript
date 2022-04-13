@@ -6,16 +6,16 @@ import AppAudioPlayer from './components/AppAudioPlayer.vue';
 
 <template>
 	<h1>Vue 3 + Typescript: Reactivity</h1>
-  <h2>Demo: Build your own audio player</h2>
+  <h2>Build your own audio player component</h2>
 
 	<app-audio-player></app-audio-player>
 	<p>You can find more speeches here:</p>
 	<ul>
 		<li>
-			<a href="https://www.americanrhetoric.com/">American Rhetoric</a>
+			<a href="https://www.americanrhetoric.com/" target="_blank">American Rhetoric</a>
 		</li>
 		<li>
-			<a href="https://commons.wikimedia.org/wiki/Category:Speeches">Wikimedia speeches</a>
+			<a href="https://commons.wikimedia.org/wiki/Category:Audio_files_of_speeches" target="_blank">Wikimedia speeches</a>
 		</li>
 	</ul>
 </template>
