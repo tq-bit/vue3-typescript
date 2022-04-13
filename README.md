@@ -1,12 +1,60 @@
-# Vue 3 + Typescript + Vite
+<div align="center">
+  <a href="https://github.com/tq-bit/chattergram">
+    <img src="public/vue-ts.png" alt="Logo" width="240" height="110" style="border-radius: 4px;">
+  </a>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+  <h3 align="center">An introdcution to Vue 3 and Typescript</h3>
 
-## Recommended IDE Setup
+  <p align="center">
+    A repository for my <a href="https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne"> article series on dev.to</a>
+  </p>
+  <div align="center">
+    <img src="https://img.shields.io/github/license/tq-bit/vue3-typescript?style=plastic&logo=vue.js" />
+    <img src="https://img.shields.io/github/last-commit/tq-bit/vue3-typescript?style=plastic&logo=git" />
+  </div>
+</div>
+
+## How to use this repos
+
+- As a finishing point for the first article of the series
+- As a starting point for all other articles
+
+You can find a list of all branches right below.
+
+## Article branches
+
+### Getting started
+
+Article:
+
+- On my blog: https://blog.q-bit.me/an-introduction-to-vue-3-and-typescript-getting-started/
+- On Dev.to: https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne
+- Branch: https://github.com/tq-bit/vue3-typescript
+
+### How to define properties and events
+
+TBD
+
+### How to access attributes and slots
+
+TBD
+
+### How to create functional components
+
+TBD
+
+### How to write a simple state management system with Vue 3's composition API
+
+TBD
+
+
+###
+
+## Recommended IDE Setup (from the original readme)
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-## Type Support For `.vue` Imports in TS
+## Type Support For `.vue` Imports in TS (from the original readme)
 
 Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
 
