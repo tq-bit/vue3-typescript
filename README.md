@@ -10,6 +10,7 @@
   </p>
   <div align="center">
     <img src="https://img.shields.io/github/license/tq-bit/vue3-typescript?style=plastic&logo=vue.js" />
+    <img src="https://img.shields.io/badge/articles-1-orange?style=plastic&logo=dev.to" />
     <img src="https://img.shields.io/github/last-commit/tq-bit/vue3-typescript?style=plastic&logo=git" />
   </div>
 </div>
