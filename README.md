@@ -9,8 +9,12 @@
     A repository for my <a href="https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne"> article series on dev.to</a>
   </p>
   <div align="center">
-    <img src="https://img.shields.io/github/license/tq-bit/vue3-typescript?style=plastic" />
-    <img src="https://img.shields.io/badge/articles-1-orange?style=plastic&logo=dev.to" />
+    <a href="https://github.com/tq-bit/vue3-typescript/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/tq-bit/vue3-typescript?style=plastic" />
+    </a>
+    <a href="https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne">
+      <img src="https://img.shields.io/badge/articles-1-orange?style=plastic&logo=dev.to" />
+    </a>
     <img src="https://img.shields.io/github/last-commit/tq-bit/vue3-typescript?style=plastic&logo=git" />
   </div>
 </div>
