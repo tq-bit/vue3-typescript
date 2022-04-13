@@ -8,34 +8,62 @@ const DEFAULT_AUDIO_ADDRESS =
 	'https://www.americanrhetoric.com/mp3clips/politicalspeeches/gettysburgaddressjohnnycash.mp3';
 
 // Define reactive values for this component
-const audioFileSource = ref<string>(DEFAULT_AUDIO_ADDRESS);
+const currentAudioFileSource = ref<string>(DEFAULT_AUDIO_ADDRESS);
+const previousAudioFileSource = ref<string>(DEFAULT_AUDIO_ADDRESS);
 const playbackTime = ref<number>(0);
 const audioDuration = ref<number>(Infinity);
 const isPlaying = ref<boolean>(false);
+
+// Computed properties are re-evaluated when their dependant values change
+const audioSourceChanged = computed(
+	() => previousAudioFileSource.value !== currentAudioFileSource.value
+);
 
 // Template elements can also be referenced using `ref`
 const audioPlayerElement = ref<HTMLAudioElement | null>(null);
 
 // Define component's functionality
-const onClick = (): void | Promise<void> => {
-	if (audioPlayerElement.value) {
-		isPlaying.value = !isPlaying.value;
+const onClickPlayButton = (): void => {
+	setAudioSourceToUserInput();
 
-		if (isPlaying.value) {
-			return audioPlayerElement.value.pause();
-		}
-		return audioPlayerElement.value.play();
+	if (isPlaying.value) {
+		stopPlaying();
+	} else {
+		startPlaying();
 	}
 };
 
-const onChange = (ev: Event): void => {
+const setAudioSourceToUserInput = (): void => {
+	if (audioPlayerElement.value) {
+		if (audioSourceChanged.value) {
+			previousAudioFileSource.value = currentAudioFileSource.value;
+			audioPlayerElement.value.src = currentAudioFileSource.value;
+		}
+	}
+};
+
+const startPlaying = (): void => {
+	if (audioPlayerElement.value) {
+		isPlaying.value = true;
+		audioPlayerElement.value.play();
+	}
+};
+
+const stopPlaying = (): void => {
+	if (audioPlayerElement.value) {
+		isPlaying.value = false;
+		audioPlayerElement.value.pause();
+	}
+};
+
+const onChangeCurrentAudioTime = (ev: Event): void => {
 	if (audioPlayerElement.value) {
 		audioPlayerElement.value.currentTime = +(ev.target as HTMLInputElement).value;
 		playbackTime.value = +(ev.target as HTMLInputElement).value;
 	}
 };
 
-const syncAudioPlayer = (): void => {
+const registerAudioPlayer = (): void => {
 	if (audioPlayerElement.value) {
 		audioPlayerElement.value.ontimeupdate = () => {
 			audioDuration.value = audioPlayerElement.value?.duration || Infinity;
@@ -47,29 +75,31 @@ const syncAudioPlayer = (): void => {
 	}
 };
 
-onMounted(() => syncAudioPlayer());
+onMounted(() => registerAudioPlayer());
 </script>
 
 <template>
 	<div class="audio">
 		<audio class="hidden" ref="audioPlayerElement" controls>
-			<source :src="audioFileSource" type="audio/mpeg" />
+			<source :src="currentAudioFileSource" type="audio/mpeg" />
 		</audio>
 
-		<label class="hidden" for="audio-http-address">Enter the adress of a audio file</label>
-		<input
-			class="audio__input"
-			v-model="audioFileSource"
-			type="text"
-			name="audio-http-address"
-			id="audio-input"
-		/>
+		<div class="audio__input">
+			<label class="audio__input__label" for="audio-http-address">Enter the adress of an audio file</label>
+			<input
+				class="audio__input__field"
+				v-model="currentAudioFileSource"
+				type="text"
+				name="audio-http-address"
+				id="audio-input"
+			/>
+		</div>
 
 		<div class="audio__player">
-			<button @click="onClick" v-if="!isPlaying" class="audio__player__button">
+			<button @click="onClickPlayButton" v-if="!isPlaying" class="audio__player__button">
 				<i-play></i-play>
 			</button>
-			<button @click="onClick" v-if="isPlaying" class="audio__player__button">
+			<button @click="onClickPlayButton" v-if="isPlaying" class="audio__player__button">
 				<i-pause></i-pause>
 			</button>
 
@@ -80,7 +110,7 @@ onMounted(() => syncAudioPlayer());
 				:value="playbackTime"
 				:max="audioDuration"
 				min="0"
-				@change="onChange"
+				@change="onChangeCurrentAudioTime"
 			/>
 		</div>
 	</div>
@@ -88,24 +118,37 @@ onMounted(() => syncAudioPlayer());
 
 <style scoped>
 .audio {
-	width: 18rem;
+	background-color: var(--accent-color-secondary);
 	margin: auto;
+	width: 100%;
+	max-width: 24rem;
+	padding: 1rem 1.5rem;
+}
+
+.audio__input__label {
+	color: #fff;
+	background-color: transparent;
 }
 
 .audio__input {
+	background-color: transparent;
+}
+
+.audio__input__field {
+	margin: 0.25rem auto 1rem;
 	width: 100%;
 	padding: 0.5rem;
 	border: 2px solid var(--accent-color-secondary);
-	border-radius: 4px;
+	border-radius: 50px;
 }
 
 .audio__player {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 1rem;
 	background-color: var(--background-color-tartiary);
-	padding: 0.5rem;
+	padding: 0.5rem 1rem;
+	border-radius: 50px;
 }
 
 .audio__player__button {
@@ -128,6 +171,7 @@ input.audio__player__slider {
 	-webkit-appearance: none;
 	width: 100%;
 	height: 1rem;
+	border-radius: 50px;
 }
 input.audio__player__slider:focus {
 	outline: none;
@@ -138,11 +182,13 @@ input.audio__player__slider::-webkit-slider-runnable-track {
 	-webkit-appearance: none;
 	width: 100%;
 	height: 1rem;
+	border-radius: 50px;
 }
 input.audio__player__slider::-webkit-slider-thumb {
 	background: var(--accent-color-primary);
 	height: 1rem;
 	width: 1rem;
+	border-radius: 50px;
 	-webkit-appearance: none;
 	appearance: none;
 }
@@ -154,11 +200,13 @@ input.audio__player__slider::-moz-range-track {
 	cursor: pointer;
 	width: 100%;
 	height: 1rem;
+	border-radius: 50px;
 }
 input.audio__player__slider::-moz-range-thumb {
+	background: var(--accent-color-primary);
 	height: 1rem;
 	width: 1rem;
-	background: var(--accent-color-primary);
+	border-radius: 50px;
 }
 input.audio__player__slider::-ms-track {
 	background: var(--background-color-secondary);
@@ -173,9 +221,10 @@ input.audio__player__slider::-ms-fill-upper {
 	background: var(--background-color-secondary);
 }
 input.audio__player__slider::-ms-thumb {
+	background: var(--accent-color-primary);
 	height: 1rem;
 	width: 1rem;
-	background: var(--accent-color-primary);
+	border-radius: 50px;
 }
 input.audio__player__slider:focus::-ms-fill-lower {
 	background: transparent;
