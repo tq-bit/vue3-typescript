@@ -30,13 +30,15 @@ You can find a list of all branches right below.
 
 ### Getting started
 
-Article:
+**Get an overview of Vue3 + Typescript**
 
 - On my blog: https://blog.q-bit.me/an-introduction-to-vue-3-and-typescript-getting-started/
 - On Dev.to: https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne
 - Branch: https://github.com/tq-bit/vue3-typescript
 
 ### How to handle refs and reactivity
+
+**Build a custom audio player component with Vue 3**
 
 TBD
 
@@ -67,3 +69,9 @@ TBD
 ### How to write your own asynchronous composable using fetch
 
 TBD
+
+## Attributions
+
+### Logos
+
+Logos by https://heroicons.com/
