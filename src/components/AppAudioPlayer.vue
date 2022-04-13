@@ -15,7 +15,7 @@ const audioDuration = ref<number>(Infinity);
 const isPlaying = ref<boolean>(false);
 
 // Computed properties are re-evaluated when their dependant values change
-const audioSourceChanged = computed(
+const audioSourceChanged = computed<boolean>(
 	() => previousAudioFileSource.value !== currentAudioFileSource.value
 );
 

@@ -15,7 +15,7 @@ const emit = defineEmits<{
 const slots = useSlots();
 const attributes = useAttrs()
 
-const count = ref(0);
+const count = ref<number>(0);
 const increment = () => count.value++;
 </script>
 
