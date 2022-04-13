@@ -56,6 +56,7 @@ onMounted(() => syncAudioPlayer());
 			<source :src="audioFileSource" type="audio/mpeg" />
 		</audio>
 
+		<label class="hidden" for="audio-http-address">Enter the adress of a audio file</label>
 		<input
 			class="audio__input"
 			v-model="audioFileSource"
@@ -81,7 +82,6 @@ onMounted(() => syncAudioPlayer());
 				min="0"
 				@change="onChange"
 			/>
-			<label class="hidden" for="audio-http-address">Enter the adress of a audio file</label>
 		</div>
 	</div>
 </template>
