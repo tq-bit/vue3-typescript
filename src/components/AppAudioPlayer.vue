@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 
 import iPlay from './icons/iPlay.vue';
 import iPause from './icons/iPause.vue';
@@ -7,11 +7,47 @@ import iPause from './icons/iPause.vue';
 const DEFAULT_AUDIO_ADDRESS =
 	'https://www.americanrhetoric.com/mp3clips/politicalspeeches/gettysburgaddressjohnnycash.mp3';
 
-const audioPlayer = ref<HTMLAudioElement | null>(null);
+// Define reactive values for this component
 const audioFileSource = ref<string>(DEFAULT_AUDIO_ADDRESS);
 const playbackTime = ref<number>(0);
 const audioDuration = ref<number>(Infinity);
 const isPlaying = ref<boolean>(false);
+
+// Template elements can also be referenced using `ref`
+const audioPlayerElement = ref<HTMLAudioElement | null>(null);
+
+// Define component's functionality
+const onClick = (): void | Promise<void> => {
+	if (audioPlayerElement.value) {
+		isPlaying.value = !isPlaying.value;
+
+		if (isPlaying.value) {
+			return audioPlayerElement.value.pause();
+		}
+		return audioPlayerElement.value.play();
+	}
+};
+
+const onChange = (ev: Event): void => {
+	if (audioPlayerElement.value) {
+		audioPlayerElement.value.currentTime = +(ev.target as HTMLInputElement).value;
+		playbackTime.value = +(ev.target as HTMLInputElement).value;
+	}
+};
+
+const syncAudioPlayer = (): void => {
+	if (audioPlayerElement.value) {
+		audioPlayerElement.value.ontimeupdate = () => {
+			audioDuration.value = audioPlayerElement.value?.duration || Infinity;
+			playbackTime.value = audioPlayerElement.value?.currentTime || 0;
+		};
+		audioPlayerElement.value.onended = () => {
+			isPlaying.value = false;
+		};
+	}
+};
+
+onMounted(() => syncAudioPlayer());
 </script>
 
 <template>
@@ -29,11 +65,11 @@ const isPlaying = ref<boolean>(false);
 		/>
 
 		<div class="audio__player">
-			<button v-if="isPlaying" class="audio__player__button">
+			<button @click="onClick" v-if="!isPlaying" class="audio__player__button">
 				<i-play></i-play>
 			</button>
-			<button v-else class="audio__player__button">
-				<i-play></i-play>
+			<button @click="onClick" v-if="isPlaying" class="audio__player__button">
+				<i-pause></i-pause>
 			</button>
 
 			<input
@@ -69,7 +105,7 @@ const isPlaying = ref<boolean>(false);
 	justify-content: center;
 	margin-top: 1rem;
 	background-color: var(--background-color-tartiary);
-	padding: 0.5rem
+	padding: 0.5rem;
 }
 
 .audio__player__button {
