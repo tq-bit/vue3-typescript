@@ -1,21 +1,29 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import AppCard from './components/AppCard.vue';
+import AppContainer from './components/AppContainer.vue';
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld  />
+	<app-container tag="main" :page="true" :centered="true">
+		<app-card>
+			<template v-slot:header> Functional components</template>
+			<template v-slot:default>
+				<p>
+					This card element is a default HTML template while the outer container is rendered
+					dynamically. You're free to toggle its tag, whether it should fill the whole page or
+					whether this card is centered.
+				</p>
+			</template>
+			<template v-slot:footer> Card footer </template>
+		</app-card>
+	</app-container>
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #2c3e50;
 }
 </style>
