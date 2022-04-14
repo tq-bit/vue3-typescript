@@ -1,12 +1,11 @@
 <script setup lang="ts">
 withDefaults(
 	defineProps<{
-		label: string;
+		label?: string;
 		required: boolean;
 		modelValue: string | number;
 	}>(),
 	{
-		label: 'Choose a username',
 		required: false,
 		modelValue: '',
 	}

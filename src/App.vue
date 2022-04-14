@@ -6,7 +6,7 @@ const username = ref<string>('');
 </script>
 
 <template>
-	<app-input v-model="username"></app-input>
+	<app-input label="Choose a username" v-model="username"></app-input>
 	<p v-if="username">
 		Your name is <output> {{ username }} </output>
 	</p>
