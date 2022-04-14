@@ -3,7 +3,7 @@
     <img src="public/vue-ts.png" alt="Logo" width="240" height="110" style="border-radius: 4px;">
   </a>
 
-  <h3 align="center">An introdcution to Vue 3 and Typescript</h3>
+  <h3 align="center">An introdcution to Vue 3 and Typescript - Refs and reactivity</h3>
 
   <p align="center">
     A repository for my <a href="https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne"> article series on dev.to</a>
