@@ -9,6 +9,9 @@ const handleRipple = (element: HTMLElement, binding: DirectiveBinding, mouseEven
 
 	function applyRippleStyle(): void {
 		const elementCoordinates = element.getBoundingClientRect();
+		element.style.position = 'relative';
+		element.style.overflow = 'hidden';
+
 		const offsetY: number = mouseEvent.clientY - elementCoordinates.y;
 		const offsetX: number = mouseEvent.clientX - elementCoordinates.x;
 
@@ -43,17 +46,15 @@ const handleRipple = (element: HTMLElement, binding: DirectiveBinding, mouseEven
 		}
 	}
 
-	function createRippleElement() {
+	function createRippleElement(): HTMLSpanElement {
 		const rippleElement: HTMLSpanElement = document.createElement('span');
 		rippleElement.style.pointerEvents = 'none';
 		return rippleElement;
 	}
 };
 
-const vRipple: Directive ={
+const vRipple: Directive = {
 	mounted: (el: any, binding: DirectiveBinding): void => {
-		el.style.position = 'relative';
-		el.style.overflow = 'hidden';
 		el.addEventListener('click', (ev: MouseEvent) => handleRipple(el, binding, ev));
 	},
 };
