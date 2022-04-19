@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/tq-bit/chattergram">
+  <a href="https://github.com/tq-bit/vue3-typescript/">
     <img src="public/vue-ts.png" alt="Logo" width="240" height="110" style="border-radius: 4px;">
   </a>
 
@@ -13,7 +13,7 @@
       <img src="https://img.shields.io/github/license/tq-bit/vue3-typescript?style=plastic" />
     </a>
     <a href="https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-getting-started-32ne">
-      <img src="https://img.shields.io/badge/articles-1-steelblue?style=plastic&logo=dev.to" />
+      <img src="https://img.shields.io/badge/articles-2-steelblue?style=plastic&logo=dev.to" />
     </a>
     <img src="https://img.shields.io/github/last-commit/tq-bit/vue3-typescript?style=plastic&logo=git" />
   </div>
@@ -38,7 +38,9 @@ Article:
 
 ### How to handle refs and reactivity
 
-TBD
+- On my blog: https://blog.q-bit.me/an-introduction-to-vue-3-and-typescript-refs-and-reactivity/
+- On Dev.to: https://dev.to/tqbit/an-introduction-to-vue-3-and-typescript-refs-and-reactivity-8nh
+- Branch: https://github.com/tq-bit/vue3-typescript/tree/refs-and-reactivity
 
 ### How to define properties and events
 
