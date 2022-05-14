@@ -20,7 +20,7 @@ const audioSourceChanged = computed<boolean>(
 );
 
 // Template elements can also be referenced using `ref`
-const audioPlayerElement = ref<HTMLAudioElement | null>(null);
+const audioPlayerElement = ref<HTMLAudioElement>();
 
 // Define component's functionality
 const onClickPlayButton = (): void => {
@@ -85,7 +85,9 @@ onMounted(() => registerAudioPlayer());
 		</audio>
 
 		<div class="audio__input">
-			<label class="audio__input__label" for="audio-http-address">Enter the adress of an audio file</label>
+			<label class="audio__input__label" for="audio-http-address"
+				>Enter the adress of an audio file</label
+			>
 			<input
 				class="audio__input__field"
 				v-model="currentAudioFileSource"
